@@ -18,5 +18,4 @@ services:
     environment:
       - FLASK_APP=doc2json/flask/app.py
     depends_on:
-      grobid:
-        condition: service_healthy
+      - grobid
