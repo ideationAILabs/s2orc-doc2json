@@ -13,11 +13,11 @@ app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'pdf', 'gz', 'nxml'}
 
 
-@app.route('/')
+@app.route('/doc2json')
 def home():
     return render_template("home.html")
 
-@app.route('/', methods=['POST'])
+@app.route('/doc2json', methods=['POST'])
 def upload_file():
     uploaded_file = request.files['file']
     if uploaded_file.filename != '':
@@ -53,7 +53,7 @@ def upload_file():
 
     return redirect(url_for('index'))
 
-@app.route('/upload_url')
+@app.route('/doc2json/upload_url')
 def upload_url():
     url = request.args.get('url')
     filename = "unknown"
