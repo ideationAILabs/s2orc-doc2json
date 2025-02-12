@@ -17,7 +17,7 @@ services:
 
   s2orc-doc2json:
     build:
-      context: ./s2orc-doc2json
+      context: .
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
