@@ -1,14 +1,5 @@
 version: '3.8'
-
 services:
-  grobid:
-    image: lfoppiano/grobid:0.8.1
-    ports:
-      - "8070:8070"
-    init: true
-    ulimits:
-      core: 0
-
   s2orc-doc2json:
     build:
       context: .
@@ -17,5 +8,11 @@ services:
       - "8080:8080"
     environment:
       - FLASK_APP=doc2json/flask/app.py
-    depends_on:
-      - grobid
+    networks:
+      - grobid-network
+    extra_hosts:
+      - "localhost:host-gateway"
+
+networks:
+  grobid-network:
+    external: true
